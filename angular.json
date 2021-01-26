@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "ngModel"
+  "defaultProject": "ngModel",
+  "cli": {
+    "analytics": false
+  }
 }

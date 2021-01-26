@@ -1,0 +1,15 @@
+    <form #myForm='ngForm'>
+        <h2>{{data.id}} : {{data.name}}</h2>
+        <div>
+            <input type="number" [(ngModel)]='data.id' #id='ngModel' name="id" required>
+            <p *ngIf='id.invalid'>fill id input</p>
+        </div>
+        <div>
+            <input type="text" [(ngModel)]='data.name' #name='ngModel' name="name" required>
+            <p *ngIf='name.invalid'>fill name input</p>
+        </div>
+        <button  [disabled]='myForm.invalid' (click)='showInputData(myForm, id, name)'>Show</button>
+    </form>
+
+
+
