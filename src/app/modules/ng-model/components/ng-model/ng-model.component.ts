@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-ng-model',
@@ -9,11 +10,13 @@ import { NgForm, NgModel } from '@angular/forms';
 export class NgModelComponent implements OnInit {
   data : Partial<{id : number, name : string}> = {}
 
-  constructor() { }
+  constructor(private userService : UserService) { }
 
   ngOnInit(): void {
   }
-  showInputData(ngForm: NgForm, id : NgModel, name: NgModel):void {
-    console.log(id, name, ngForm);
+  async showInputData(ngForm: NgForm, id : NgModel, name: NgModel): Promise<void> {
+    console.log(ngForm.value);
+    const result = await this.userService.getAllFilteredUsers(id.value, name.value).then();
+    console.log(result);
   }
 }
